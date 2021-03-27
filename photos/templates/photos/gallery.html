@@ -23,22 +23,34 @@
                       Categories
                     </div>
                     <ul class="list-group list-group-flush">
-                      <li class="list-group-item">Cras justo odio</li>
-                      <li class="list-group-item">Dapibus ac facilisis in</li>
+                      
+                      {% for category  in categories  %}
+                      <li class="list-group-item">{{ category.name }}</li>
+                      {% endfor %}
+                          
+                        
+                      
                       <a href="{% url 'add' %}" class="btn btn-dark btn-block btn-sm m-1">Add Photo</a>
                     </ul>
                   </div>
             </div>
             <div class="col-md-9">
                 <div class="row">
+                    
+                    {% for image in images  %}
                     <div class='col-md-4'>
                         <div class="card my-2">
-                            <img class="image-thumbail" src="https://timesofindia.indiatimes.com/photo/67586673.cms" alt="Card image cap">
+                            <img class="image-thumbail" src="{{ image.img.url }}" alt="Card image cap">
                             <div class="card-body">
-                              <small>Category:</small>
+                                
+                              <small>Category: {{ image.category.name }}</small>
                             </div>
-                            <a href="{% url 'photo' 5 %}" class="btn btn-outline-dark btn-sm m-1" > View</a>
+                            <a href="{% url 'photo' image.id %}" class="btn btn-outline-dark btn-sm m-1" > View</a>
                           </div>
+                        
+                    {% endfor %}
+                        
+                    
 
                     </div>
                     
