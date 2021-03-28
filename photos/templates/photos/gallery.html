@@ -23,7 +23,7 @@
                       Categories
                     </div>
                     <ul class="list-group list-group-flush">
-                      
+                        <li class="list-group-item">All</li>
                       {% for category  in categories  %}
                       <li class="list-group-item">{{ category.name }}</li>
                       {% endfor %}
@@ -36,18 +36,19 @@
             </div>
             <div class="col-md-9">
                 <div class="row">
-                    
-                    {% for image in images  %}
-                    <div class='col-md-4'>
+                    {% for image in images %}
+                    <div class="col-md-4">
                         <div class="card my-2">
-                            <img class="image-thumbail" src="{{ image.img.url }}" alt="Card image cap">
+                            <img class="image-thumbail" src="{{image.img.url}}" alt="Card image cap">
+
                             <div class="card-body">
-                                
-                              <small>Category: {{ image.category.name }}</small>
+                                <small>Category: {{image.category.name}}</small>
                             </div>
-                            <a href="{% url 'photo' image.id %}" class="btn btn-outline-dark btn-sm m-1" > View</a>
-                          </div>
-                        
+                            <a href="{% url 'photo' image.id %}" class="btn btn-outline-dark btn-sm m-1">View</a>
+                        </div>
+                    </div>
+                    {% empty %}
+                    <h3>No photos...</h3>
                     {% endfor %}
                         
                     
